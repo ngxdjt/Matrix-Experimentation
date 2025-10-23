@@ -91,10 +91,16 @@ class Matrix2:
             return self.inverse()
         elif other <= 0:
             raise("Only raise to positive integer powers")
+        elif other == 1:
+            return self
         else:
             temp = Matrix2(1,0,0,1)
-            for i in range(other):
-                temp *= self
+            while other > 1:
+                if other % 2 == 1:
+                    temp *= self
+                temp *= self * self
+                other //= 2    
+                
             return temp
 
     def showElements(self):
@@ -105,4 +111,4 @@ if __name__ == "__main__":
     matrix2 = Matrix2(1,2,7,4)
     vector = Vector2(1, 6)
 
-    print((matrix1 ** -1).showElements())
+    print((matrix1 ** 1).showElements())
