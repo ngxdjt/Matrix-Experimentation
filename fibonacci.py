@@ -7,4 +7,5 @@ def nthFib(n):
     base = Matrix2(1, 1, 1, 0)
     return (base ** n).elements[0][1]
 
-print(nthFib(100000000))
+if __name__ == "__main__":
+    print(nthFib(100000000))
