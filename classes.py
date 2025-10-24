@@ -12,8 +12,8 @@ class Vector2:
         if type(other) == int or type(other) == float:
             return Vector2(other * self.elements[0], other * self.elements[1])
 
-    def showElements(self):
-        return [self.elements[0], self.elements[1]]
+    def __str__(self):
+        return f"{[self.elements[0], self.elements[1]]}"
 
 class Matrix2:
     def __init__(self, a:float, b:float, c:float, d:float):
@@ -103,12 +103,12 @@ class Matrix2:
                 
             return temp
 
-    def showElements(self):
-        return [self.elements[0][0], self.elements[0][1], self.elements[1][0], self.elements[1][1]]
+    def __str__(self):
+        return f"{[self.elements[0][0], self.elements[0][1], self.elements[1][0], self.elements[1][1]]}"
 
 if __name__ == "__main__":
     matrix1 = Matrix2(1,5,2,6)
     matrix2 = Matrix2(1,2,7,4)
     vector = Vector2(1, 6)
 
-    print((matrix1 ** 1).showElements())
+    print((matrix1 ** 1))

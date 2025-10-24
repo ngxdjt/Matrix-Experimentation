@@ -7,5 +7,4 @@ def nthFib(n):
     base = Matrix2(1, 1, 1, 0)
     return (base ** n).elements[0][1]
 
-for i in range(10):
-    print(nthFib(i))
+print(nthFib(100000000))
