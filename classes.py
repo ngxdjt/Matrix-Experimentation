@@ -94,14 +94,15 @@ class Matrix2:
         elif other == 1:
             return self
         else:
-            temp = Matrix2(1,0,0,1)
-            while other > 1:
+            result = Matrix2(1,0,0,1)
+            base = self
+            while other > 0:
                 if other % 2 == 1:
-                    temp *= self
-                temp *= self * self
+                    result *= base
+                base *= base
                 other //= 2    
                 
-            return temp
+            return result
 
     def __str__(self):
         return f"{[self.elements[0][0], self.elements[0][1], self.elements[1][0], self.elements[1][1]]}"
