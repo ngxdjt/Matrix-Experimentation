@@ -11,6 +11,10 @@ class Vector2:
     def __rmult__(self, other):
         if type(other) == int or type(other) == float:
             return Vector2(other * self.elements[0], other * self.elements[1])
+        elif isinstance(other, Matrix2):
+            return Vector2(other.elements[0][0]*self.elements[0] + other.elements[0][1]*self.elements[1],
+                           other.elements[1][0]*self.elements[0] + other.elements[1][1]*self.elements[1]
+                           )
 
     def __str__(self):
         return f"{[self.elements[0], self.elements[1]]}"
@@ -112,4 +116,4 @@ if __name__ == "__main__":
     matrix2 = Matrix2(1,2,7,4)
     vector = Vector2(1, 6)
 
-    print((matrix1 ** 1))
+    print((matrix1 * vector))
