@@ -99,11 +99,10 @@ class Matrix2:
             return self
         else:
             result = Matrix2(1,0,0,1)
-            base = self
             while other > 0:
                 if other % 2 == 1:
-                    result *= base
-                base *= base
+                    result *= self
+                self *= self
                 other //= 2    
                 
             return result
@@ -116,4 +115,4 @@ if __name__ == "__main__":
     matrix2 = Matrix2(1,2,7,4)
     vector = Vector2(1, 6)
 
-    print((matrix1 * matrix2))
+    print((matrix1 ** 5))
