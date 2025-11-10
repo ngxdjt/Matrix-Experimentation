@@ -5,11 +5,11 @@ class Vector2:
         self.elements = [a, b]
     
     def __mult__(self, other):
-        if type(other) == int or type(other) == float:
+        if isinstance(other, (int,float)):
             return Vector2(other * self.elements[0], other * self.elements[1])
         
     def __rmult__(self, other):
-        if type(other) == int or type(other) == float:
+        if isinstance(other, (int,float)):
             return Vector2(other * self.elements[0], other * self.elements[1])
         elif isinstance(other, Matrix2):
             return Vector2(other.elements[0][0]*self.elements[0] + other.elements[0][1]*self.elements[1],
@@ -38,17 +38,17 @@ class Matrix2:
                         ]
         
     def __mul__(self, other):
-        if type(other) == Matrix2:
+        if isinstance(other, Matrix2):
             return Matrix2(self.elements[0][0] * other.elements[0][0] + self.elements[0][1] * other.elements[1][0],
                            self.elements[0][0] * other.elements[0][1] + self.elements[0][1] * other.elements[1][1],
                            self.elements[1][0] * other.elements[0][0] + self.elements[1][1] * other.elements[1][0],
                            self.elements[1][0] * other.elements[0][1] + self.elements[1][1] * other.elements[1][1]
                            )
-        elif type(other) == Vector2:
+        elif isinstance(other, Vector2):
             return Vector2(self.elements[0][0] * other.elements[0] + self.elements[0][1] * other.elements[1],
                            self.elements[1][0] * other.elements[0] + self.elements[1][1] * other.elements[1]
                            )
-        elif type(other) == int or type(other) == float:
+        elif isinstance(other, (int,float)):
             return Matrix2(other * self.elements[0][0],
                            other * self.elements[0][1],
                            other * self.elements[1][0],
@@ -56,13 +56,13 @@ class Matrix2:
                            )
     
     def __rmul__(self, other):
-        if type(other) == Matrix2:
+        if isinstance(other, Matrix2):
             return Matrix2(other.elements[0][0] * self.elements[0][0] + other.elements[0][1] * self.elements[1][0],
                            other.elements[0][0] * self.elements[0][1] + other.elements[0][1] * self.elements[1][1],
                            other.elements[1][0] * self.elements[0][0] + other.elements[1][1] * self.elements[1][0],
                            other.elements[1][0] * self.elements[0][1] + other.elements[1][1] * self.elements[1][1]
                            )
-        elif type(other) == int or type(other) == float:
+        elif isinstance(other, (int,float)):
             return Matrix2(other * self.elements[0][0],
                            other * self.elements[0][1],
                            other * self.elements[1][0],
@@ -70,7 +70,7 @@ class Matrix2:
                            )
     
     def __add__(self, other):
-        if type(other) == Matrix2:
+        if isinstance(other, Matrix2):
             return Matrix2(
                 self.elements[0][0] + other.elements[0][0],
                 self.elements[0][1] + other.elements[0][1],
@@ -116,4 +116,4 @@ if __name__ == "__main__":
     matrix2 = Matrix2(1,2,7,4)
     vector = Vector2(1, 6)
 
-    print((matrix1 * vector))
+    print((matrix1 * matrix2))
